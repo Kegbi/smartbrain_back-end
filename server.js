@@ -7,16 +7,14 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
-require('dotenv').config();
 
 const PORT = process.env.PORT;
-const DATABASE_URL = process.env.DATABASE_URL;
 const salt = bcrypt.genSaltSync(10);
 
 const db = knex({
     client: 'pg',
     connection: {
-      connectionString: DATABASE_URL,
+      connectionString : process.env.DATABASE_URL,
       ssl: true
     }
 });
