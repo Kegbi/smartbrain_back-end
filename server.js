@@ -15,10 +15,8 @@ const salt = bcrypt.genSaltSync(10);
 const db = knex({
     client: 'pg',
     connection: {
-      host : 'postgresql-adjacent-48247',
-      user : 'postgres',
-      password : 'Ivan03823443',
-      database : 'smartbrain'
+      host : process.env.DATABASE_URL,
+      ssl: true,
     }
 });
 
