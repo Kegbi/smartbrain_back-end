@@ -9,12 +9,13 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const PORT = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
 const salt = bcrypt.genSaltSync(10);
 
 const db = knex({
     client: 'pg',
     connection: {
-      connectionString : process.env.DATABASE_URL,
+      connectionString : DATABASE_URL,
       ssl: true
     }
 });
