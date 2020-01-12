@@ -9,6 +9,7 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 require('dotenv').config();
 
+ const PORT = process.env.PORT;
 const salt = bcrypt.genSaltSync(10);
 
 const db = knex({
