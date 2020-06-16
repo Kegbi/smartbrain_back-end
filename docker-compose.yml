@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # Backend
+  smartbrain_back-end:
+    container_name: backend
+    build: ./
+    command: npm start
+    working_dir: /usr/src/smartbrain_back-end
+    ports:
+      - "30000:3000"
+    volumes:
+      - ./:/usr/src/smartbrain_back-end
+
+  # Postgres
+#  postgres_db:
+#    image: postgres
+#    ports:
+#      - "54320:5432"

@@ -1,8 +1,10 @@
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const knex = require('knex');
+const morgan =  require('morgan')
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
@@ -21,8 +23,9 @@ const db = knex({
 });
 
 const app = express();
-app.use(bodyParser.json());
+app.use(morgan('combined'));
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {res.send("It's working!") })
 app.post('/signin', signin.handleSignIn(db, bcrypt))
