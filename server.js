@@ -16,10 +16,7 @@ const salt = bcrypt.genSaltSync(10);
 
 const db = knex({
     client: 'pg',
-    connection: {
-      connectionString : DATABASE_URL,
-      ssl: true
-    }
+    connection: process.env.POSTGRES_URI
 });
 
 const app = express();
