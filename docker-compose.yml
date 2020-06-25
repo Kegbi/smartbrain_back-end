@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # Backend
@@ -9,6 +9,7 @@ services:
     working_dir: /usr/src/smartbrain_back-end
     environment:
       POSTGRES_URI: postgres://postgres:secretpass@postgres:5432/smart-brain-docker
+      REDIS_URI: redis://redis:6379
     ports:
       - "30000:3000"
     volumes:
@@ -24,3 +25,9 @@ services:
       POSTGRES_PASSWORD: secretpass
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: postgres
+
+  # Redis
+  redis:
+    image: redis
+    ports:
+      - "63790:6379"
