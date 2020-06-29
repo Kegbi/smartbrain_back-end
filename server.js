@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const register = require("./controllers/register");
 const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
+const logout = require("./controllers/logout");
 const image = require("./controllers/image");
 const auth = require("./middleware/authorization");
 
@@ -29,6 +30,9 @@ app.get("/", (req, res) => {
 	res.send("It's working!");
 });
 app.post("/signin", signin.signInAuthentication(db, bcrypt));
+app.post("/logout", auth.requireAuth, (req, res) => {
+	logout.handleLogout(req, res);
+});
 app.post("/register", (req, res) => {
 	register.handleRegister(req, res, db, bcrypt, salt);
 });

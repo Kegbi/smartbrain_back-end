@@ -1,5 +1,5 @@
 const handleRegister = (req, res, db, bcrypt, salt) => {
-	const { name, email, password } = req.body;
+	const { name, email, age, pet, password } = req.body;
 	if (!email || !name || !password) {
 		return res.status(400).json("Incorrect form submission");
 	}
@@ -16,8 +16,10 @@ const handleRegister = (req, res, db, bcrypt, salt) => {
 				return trx("users")
 					.returning("*")
 					.insert({
-						email: loginEmail[0],
 						name: name,
+						email: loginEmail[0],
+						age: age,
+						pet: pet,
 						joined: new Date(),
 					})
 					.then((user) => {

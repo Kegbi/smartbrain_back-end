@@ -9,7 +9,6 @@ const requireAuth = (req, res, next) => {
 		if (err || !reply) {
 			return res.status(401).json("Unauthorized");
 		}
-		console.log("YOU SHALL NOT... Ah, wrong case, go on");
 		return next();
 	});
 };
